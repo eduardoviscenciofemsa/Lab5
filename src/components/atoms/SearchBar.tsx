@@ -28,7 +28,6 @@ export default function SearchBar({onSearch, isLoading}: PropsT) {
         <TextInput
           placeholder="Type here to search"
           placeholderTextColor={'#a2a2a2'}
-          onEndEditing={() => console.log('end')}
           onChangeText={handleOnSearch}
           style={styles.textInputContainer}
         />
