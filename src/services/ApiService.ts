@@ -5,7 +5,6 @@ import type {ResponseUserT} from '../types/response.type';
 import {storeData} from './StorageService';
 
 export const getUsers = async ({queryName = ''}: {queryName?: string} = {}) => {
-  console.log('queryName:', queryName);
   try {
     const {data} = await axios.get<ResponseUserT[]>(
       `https://jsonplaceholder.typicode.com/users${
