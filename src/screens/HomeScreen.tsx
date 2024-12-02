@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import {View, Text, StyleSheet, SafeAreaView} from 'react-native';
 
 import {UserList} from '../components/molecules/UserList';
@@ -26,14 +26,6 @@ export default function HomeScreen() {
     error,
   } = useUsersQuery({queryString: query}); // Using react-query
 
-  const [filteredUsers, setFilteredUsers] = useState(users);
-
-  useEffect(() => {
-    if (users) {
-      setFilteredUsers(users);
-    }
-  }, [users]);
-
   if (isError) {
     return <Text>{error.message}</Text>;
   }
@@ -42,7 +34,7 @@ export default function HomeScreen() {
     <SafeAreaView style={styles.safeAreaContainer}>
       <View style={styles.container}>
         <SearchBar onSearch={text => setQuery(text)} isLoading={isFetching} />
-        <UserList users={filteredUsers ?? []} />
+        <UserList users={users ?? []} />
       </View>
     </SafeAreaView>
   );
